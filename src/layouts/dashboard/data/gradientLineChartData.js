@@ -26,7 +26,7 @@ function GradientLineChartData() {
           let newHumidityValues = [], newLabels = [];
           data.map((item) => {
             newHumidityValues.push(item.value);
-            const formattedTime = new Date(item.created_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+            const formattedTime = new Date(item.created_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
             newLabels.push(formattedTime);
           });
           setHumidityValues(newHumidityValues);

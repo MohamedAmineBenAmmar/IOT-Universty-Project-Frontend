@@ -37,10 +37,25 @@ import configs from "examples/Charts/MixedChart/configs";
 // Soft UI Dashboard React base styles
 import colors from "assets/theme/base/colors";
 
-function MixedChart({ title, description, height, chart }) {
+// Soft UI Dashboard React examples
+import BarReportsChartItem from "examples/Charts/BarCharts/ReportsBarChart/ReportsBarChartItem";
+import Grid from "@mui/material/Grid";
+
+function MixedChart({ color, title, description, height, chart, items }) {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({});
   const { data, options } = chartData;
+
+  const renderItems = items.map(({ icon, label, progress }) => (
+    <Grid item xs={6} sm={3} key={label}>
+      <BarReportsChartItem
+        color={color}
+        icon={{ color: icon.color, component: icon.component }}
+        label={label}
+        progress={{ content: progress.content, percentage: progress.percentage }}
+      />
+    </Grid>
+  ));
 
   useEffect(() => {
     const chartDatasets = chart.datasets
@@ -128,7 +143,7 @@ function MixedChart({ title, description, height, chart }) {
         <SoftBox px={description ? 1 : 0} pt={description ? 1 : 0}>
           {title && (
             <SoftBox mb={1}>
-              <SoftTypography variant="h6">{title}</SoftTypography>
+              <SoftTypography variant="h6"></SoftTypography>
             </SoftBox>
           )}
           <SoftBox mb={2}>
@@ -146,6 +161,21 @@ function MixedChart({ title, description, height, chart }) {
         ),
         [chartData, height]
       )}
+      <SoftBox px={1}>
+        <SoftBox mb={2}>
+          <SoftTypography variant="h6" fontWeight="medium" textTransform="capitalize">
+            {title}
+          </SoftTypography>
+          <SoftTypography component="div" variant="button" color="text" fontWeight="regular">
+            {description}
+          </SoftTypography>
+        </SoftBox>
+        <SoftBox py={1} px={0.5}>
+          <Grid container spacing={2}>
+            {renderItems}
+          </Grid>
+        </SoftBox>
+      </SoftBox>{" "}
     </SoftBox>
   );
 

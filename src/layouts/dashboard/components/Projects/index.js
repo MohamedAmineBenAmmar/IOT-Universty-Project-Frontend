@@ -41,7 +41,7 @@ function Projects({title, data}) {
     // format date created_at
     const date = new Date(item.created_at);
     const dateStr = date.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'}).replace(/ /g, '-');
-    const timeStr = date.toLocaleTimeString('en-GB', {hour: '2-digit', minute:'2-digit', second: '2-digit'});
+    const timeStr = date.toLocaleTimeString('en-GB', {hour: '2-digit', minute:'2-digit'});
     const created_at = dateStr + ' ' + timeStr;
     const value = item.value + (title == 'Temperature' ? ' °C' : ' %');
     return {
