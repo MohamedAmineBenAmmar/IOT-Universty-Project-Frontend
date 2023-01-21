@@ -28,12 +28,27 @@ import SoftTypography from "components/SoftTypography";
 // Soft UI Dashboard Materail-UI example components
 import Table from "examples/Tables/Table";
 
-// Data
-import data from "layouts/dashboard/components/Projects/data";
-
-function Projects() {
-  const { columns, rows } = data();
+function Projects({title, data}) {
+  const columns = [{
+    'name' : 'value',
+    'align' : 'center',
+  }, {
+    'name' : 'created_at',
+    'align' : 'center',
+  }];
   const [menu, setMenu] = useState(null);
+  let rows = data.map((item) => {
+    // format date created_at
+    const date = new Date(item.created_at);
+    const dateStr = date.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'}).replace(/ /g, '-');
+    const timeStr = date.toLocaleTimeString('en-GB', {hour: '2-digit', minute:'2-digit', second: '2-digit'});
+    const created_at = dateStr + ' ' + timeStr;
+    const value = item.value + (title == 'Temperature' ? ' °C' : ' %');
+    return {
+      'value' : value,
+      'created_at' : created_at,
+    };
+  });
 
   const openMenu = ({ currentTarget }) => setMenu(currentTarget);
   const closeMenu = () => setMenu(null);
@@ -64,22 +79,8 @@ function Projects() {
       <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <SoftBox>
           <SoftTypography variant="h6" gutterBottom>
-            Projects
+            {title}
           </SoftTypography>
-          <SoftBox display="flex" alignItems="center" lineHeight={0}>
-            <Icon
-              sx={{
-                fontWeight: "bold",
-                color: ({ palette: { info } }) => info.main,
-                mt: -0.5,
-              }}
-            >
-              done
-            </Icon>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 done</strong> this month
-            </SoftTypography>
-          </SoftBox>
         </SoftBox>
         <SoftBox color="text" px={2}>
           <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
