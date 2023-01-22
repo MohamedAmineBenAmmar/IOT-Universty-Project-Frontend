@@ -71,7 +71,8 @@ function Overview() {
                   </p>
                 )}
 
-                {currentSelectedTab === 2 && <p>Our system requires that you provide an email that is going to be used in case of urgence cases</p>}
+                {currentSelectedTab === 2 && <p>Our system requires that you provide an email that is going to be used in case of urgence cases <br />
+                When you receive an email froml our application you must reset the flags to be notified in the upcoming urgence case</p>}
               </SoftTypography>
             </SoftBox>
           </SoftBox>
