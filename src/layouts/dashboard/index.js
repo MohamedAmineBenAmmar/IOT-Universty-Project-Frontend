@@ -43,6 +43,7 @@ import ReportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import GradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 import { useEffect, useState } from "react";
 
+import Header from './components/Header'
 
 function Dashboard() {
   const { size } = typography;
@@ -63,9 +64,11 @@ function Dashboard() {
     fetchData();
   }, []);
 
+  const [CurrentSelectedTab, setCurrentSelectedTab] = useState(0)
   return (
     <DashboardLayout>
-      <DashboardNavbar />
+      {/* <DashboardNavbar /> */}
+      <Header setCurrentSelectedTab={setCurrentSelectedTab} />
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Grid container spacing={3}>

@@ -67,9 +67,9 @@ function Header({ setCurrentSelectedTab }) {
   }, [tabsOrientation]);
 
   const handleSetTabValue = (event, newValue) => {
-    setCurrentSelectedTab(newValue)
+    setCurrentSelectedTab(newValue);
     setTabValue(newValue);
-  }
+  };
 
   return (
     <SoftBox position="relative">
@@ -116,26 +116,13 @@ function Header({ setCurrentSelectedTab }) {
           <Grid item>
             <SoftBox height="100%" mt={0.5} lineHeight={1}>
               <SoftTypography variant="h5" fontWeight="medium">
-                Configuration
+                Data Visualization
               </SoftTypography>
               <SoftTypography variant="button" color="text" fontWeight="medium">
-                ESP32 / DHT22 
+                Dashboard that provides widgets, charts and Datatables to track tempreature and
+                humidity
               </SoftTypography>
             </SoftBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
-            <AppBar position="static">
-              <Tabs
-                orientation={tabsOrientation}
-                value={tabValue}
-                onChange={handleSetTabValue}
-                sx={{ background: "transparent" }}
-              >
-                <Tab label="Sensor" icon={<Cube />} />
-                <Tab label="Listener" icon={<Document />} />
-                <Tab label="Email Configuration" icon={<Settings />} />
-              </Tabs>
-            </AppBar>
           </Grid>
         </Grid>
       </Card>
