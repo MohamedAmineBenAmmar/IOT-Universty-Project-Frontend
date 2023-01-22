@@ -69,10 +69,10 @@ function Footer({ company, links }) {
         by
         <Link href={href} target="_blank">
           <SoftTypography variant="button" fontWeight="medium">
-            &nbsp;{name}&nbsp;
+            &nbsp;<span>Zeineb Zaiet, Nada Ben Taarit, Feriel Ben Rejab, Achraf Ben Soltane and Mohamed Amine Ben Ammar</span>&nbsp;
           </SoftTypography>
         </Link>
-        for a better web.
+        for a better web experience.
       </SoftBox>
       <SoftBox
         component="ul"
@@ -91,7 +91,7 @@ function Footer({ company, links }) {
           },
         })}
       >
-        {renderLinks()}
+        {/* {renderLinks()} */}
       </SoftBox>
     </SoftBox>
   );

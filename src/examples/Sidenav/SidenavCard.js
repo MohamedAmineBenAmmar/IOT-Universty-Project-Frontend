@@ -56,19 +56,32 @@ function SidenavCard() {
           </SoftTypography>
           <SoftBox mb={1.825} mt={-1}>
             <SoftTypography variant="caption" color="white" fontWeight="medium">
-              Please check our docs
+              Please check our source code
             </SoftTypography>
           </SoftBox>
           <SoftButton
             component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard/"
+            href="https://github.com/MohamedAmineBenAmmar/IOT-Universty-Project-Frontend"
             target="_blank"
             rel="noreferrer"
             size="small"
             color="white"
             fullWidth
+            style={{ marginBottom: "3px" }}
           >
-            documentation
+            Frontend
+          </SoftButton><br />
+          <SoftButton
+            component={Link}
+            href="https://github.com/MohamedAmineBenAmmar/IOT-Universty-Project-Backend"
+            target="_blank"
+            rel="noreferrer"
+            size="small"
+            color="white"
+            fullWidth
+            
+          >
+            Backend
           </SoftButton>
         </SoftBox>
       </CardContent>
