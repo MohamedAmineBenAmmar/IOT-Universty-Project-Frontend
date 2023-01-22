@@ -12,9 +12,9 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-function ReportsBarChartData(){
+function ReportsBarChartData() {
   const [humidityMaxValues, setHumidityMaxValues] = useState([]);
   const [humidityMinValues, setHumidityMinValues] = useState([]);
   const [temperatureMaxValues, setTemperatureMaxValues] = useState([]);
@@ -22,9 +22,9 @@ function ReportsBarChartData(){
   const [labels, setLabels] = useState([]); // same labels for both humidity and temperature
 
   useEffect(() => {
-      fetch('http://127.0.0.1:8000/humidity/get-daily-min-max-humidities')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://127.0.0.1:8000/humidity/get-daily-min-max-humidities")
+      .then((response) => response.json())
+      .then((data) => {
         let newHumidityMaxValues = [];
         let newHumidityMinValues = [];
         let newLabels = [];
@@ -38,10 +38,9 @@ function ReportsBarChartData(){
         setLabels(newLabels);
       });
 
-
-    fetch('http://127.0.0.1:8000/temperature/get-daily-min-max-temperatures')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://127.0.0.1:8000/temperature/get-daily-min-max-temperatures")
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
         let newTemperatureMaxValues = [];
         let newTemperatureMinValues = [];
@@ -86,33 +85,46 @@ function ReportsBarChartData(){
   const reportsBarChartData = {
     chart: {
       labels: labels,
-      datasets: { label: "Max", data: temperatureMaxValues, color: "info" },
+      datasets: [
+        {
+          chartType: "thin-bar",
+          label: "Max",
+          data: temperatureMaxValues,
+          color: "error",
+        },
+        {
+          chartType: "thin-bar",
+          label: "Min",
+          data: temperatureMinValues,
+          color: "info",
+        },
+      ],
     },
     items: [
       {
         icon: { color: tempColor(maxTemperature), component: "" },
         label: "Max Temp",
-        progress: { content: maxTemperature + '°C', percentage: maxTemperaturePercentage },
+        progress: { content: maxTemperature + "°C", percentage: maxTemperaturePercentage },
       },
       {
         icon: { color: tempColor(minTemperature), component: "" },
         label: "Min Temp",
-        progress: { content: minTemperature + '°C', percentage: minTemperaturePercentage },
+        progress: { content: minTemperature + "°C", percentage: minTemperaturePercentage },
       },
       {
         icon: { color: humidityColor(maxHumidity), component: "" },
         label: "Max Hum",
-        progress: { content: maxHumidity + '%', percentage: maxHumidityPercentage },
+        progress: { content: maxHumidity + "%", percentage: maxHumidityPercentage },
       },
       {
         icon: { color: humidityColor(minHumidity), component: "" },
         label: "Min Hum",
-        progress: { content: minHumidity + '%', percentage: minHumidityPercentage },
+        progress: { content: minHumidity + "%", percentage: minHumidityPercentage },
       },
     ],
   };
 
   return reportsBarChartData;
-};
+}
 
 export default ReportsBarChartData;

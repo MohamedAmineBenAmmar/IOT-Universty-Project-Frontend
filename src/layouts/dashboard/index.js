@@ -19,24 +19,19 @@ import Icon from "@mui/material/Icon";
 
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
-import SoftTypography from "components/SoftTypography";
 
 // Soft UI Dashboard React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
-import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
+import MixedChart from "examples/Charts/MixedChart";
 import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 
 // Soft UI Dashboard React base styles
 import typography from "assets/theme/base/typography";
 
 // Dashboard layout components
-import BuildByDevelopers from "layouts/dashboard/components/BuildByDevelopers";
-import WorkWithTheRockets from "layouts/dashboard/components/WorkWithTheRockets";
 import Projects from "layouts/dashboard/components/Projects";
-import OrderOverview from "layouts/dashboard/components/OrderOverview";
 
 // Data
 import ReportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
@@ -73,7 +68,7 @@ function Dashboard() {
         <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={5}>
-              <ReportsBarChart
+              <MixedChart
                 title="Today's report"
                 chart={chart}
                 items={items}
@@ -82,7 +77,7 @@ function Dashboard() {
             <Grid item xs={12} lg={7}>
               <GradientLineChart
                 title="Overview"
-                height="20.25rem"
+                height="26.25rem"
                 chart={GradientLineChartData()}
               />
             </Grid>
